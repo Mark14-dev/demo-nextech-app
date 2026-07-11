@@ -1,5 +1,96 @@
+body {
+  min-height: 100vh;
+  background: #ffffff;
+  color: #212529;
+  margin: 0;
+}
+
+.top-bar {
+  width: 100%;
+  height: 32px;
+  background: #6c757d;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.container {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.hero-glow {
+  border: 1px solid #dee2e6;
+  background: #f8f9fa;
+}
+
+h1, h2, h3, h4, p, .lead, .card-title, .card-text {
+  color: #212529;
+}
+
+.btn-primary {
+  background: #0d6efd;
+  border: none;
+  box-shadow: none;
+}
+
+.btn-primary:hover {
+  background: #0b5ed7;
+}
+
+.card {
+  border: 1px solid #dee2e6;
+  background: #ffffff;
+  color: #212529;
+}
+
+.card-body {
+  color: #212529;
+}
+
 .collection-card-image {
-  height: 180px;
+  height: 220px;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
+}
+
+.image-drop-zone {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  border-radius: 0.75rem;
+  border: 2px dashed #dee2e6;
+  background: #f8f9fa;
+  cursor: pointer;
+}
+
+.image-drop-zone:hover {
+  border-color: #0d6efd;
+}
+
+.image-drop-zone input[type='file'] {
+  display: none;
+}
+
+.image-drop-hint {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: #6c757d;
+  text-align: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.image-drop-hint small {
+  color: #6c757d;
 }
 
 .collection-description {
@@ -8,8 +99,11 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  color: #495057;
 }
 
 .item-detail-image {
   max-height: 320px;
+  border-top-left-radius: 0.75rem;
+  border-top-right-radius: 0.75rem;
 }

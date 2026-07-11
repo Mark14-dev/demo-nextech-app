@@ -9,10 +9,13 @@ export default {
           <i class="bi bi-house me-1"></i>Home
         </router-link>
         <router-link class="btn btn-outline-primary btn-sm d-flex align-items-center" to="/items">
-          <i class="bi bi-card-list me-1"></i>Items
+          <i class="bi bi-shop me-1"></i>Shop
         </router-link>
-        <router-link class="btn btn-outline-primary btn-sm" to="/about">
+        <router-link class="btn btn-outline-primary btn-sm d-flex align-items-center" to="/about">
           <i class="bi bi-info-circle me-1"></i>About
+        </router-link>
+        <router-link class="btn btn-outline-primary btn-sm d-flex align-items-center" to="/support">
+          <i class="bi bi-life-preserver me-1"></i>Support
         </router-link>
       </div>
     </nav>

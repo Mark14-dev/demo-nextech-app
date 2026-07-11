@@ -31,8 +31,8 @@ export default {
 
       <article v-else class="card shadow-sm border-0 overflow-hidden">
         <img
-          v-if="selectedItem.imageUrl"
-          :src="selectedItem.imageUrl"
+          v-if="selectedItem.previewImage || selectedItem.imageUrl"
+          :src="selectedItem.previewImage || selectedItem.imageUrl"
           :alt="selectedItem.name"
           class="item-detail-image w-100 object-fit-cover" />
         <div

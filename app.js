@@ -3,6 +3,7 @@ import AboutPageComponent from './components/about-page-component.js';
 import NavbarComponent from './components/navbar-component.js';
 import CollectionPageComponent from './components/collection-page-component.js';
 import ItemDetailPageComponent from './components/item-detail-page-component.js';
+import SupportPageComponent from './components/support-page-component.js';
 
 const routes = [
   {
@@ -16,6 +17,14 @@ const routes = [
   {
     path: '/items',
     component: CollectionPageComponent,
+  },
+  {
+    path: '/pc-parts',
+    component: CollectionPageComponent,
+  },
+  {
+    path: '/support',
+    component: SupportPageComponent,
   },
   {
     path: '/items/:id',
