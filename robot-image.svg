@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="3D robot with cowboy hat, neck, arms, hands, legs, and feet">
+  <defs>
+    <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e9eefb"/>
+      <stop offset="70%" stop-color="#9cb0df"/>
+      <stop offset="100%" stop-color="#6c82bd"/>
+    </linearGradient>
+    <linearGradient id="armGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5c74aa"/>
+      <stop offset="100%" stop-color="#1f3459"/>
+    </linearGradient>
+    <linearGradient id="legGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5c74aa"/>
+      <stop offset="100%" stop-color="#283c67"/>
+    </linearGradient>
+    <linearGradient id="hatTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2b3f6d"/>
+      <stop offset="100%" stop-color="#162444"/>
+    </linearGradient>
+    <linearGradient id="hatBrim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2f4774"/>
+      <stop offset="100%" stop-color="#13335a"/>
+    </linearGradient>
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e5f7ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#4db8ff" stop-opacity="0.12"/>
+    </radialGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="0" dy="6" result="offsetBlur"/>
+      <feMerge>
+        <feMergeNode in="offsetBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <path d="M62 78 C64 44, 180 44, 182 78 L182 186 C180 220, 62 220, 60 186 Z" fill="url(#bodyGrad)" stroke="#233763" stroke-width="10" filter="url(#softShadow)"/>
+  <path d="M82 68 L88 44 C90 32, 150 32, 152 44 L158 68 Z" fill="#2a3f70" stroke="#112142" stroke-width="4"/>
+  <path d="M54 78 Q120 18, 186 78 L186 86 Q120 34, 54 86 Z" fill="url(#hatBrim)"/>
+  <path d="M72 44 C86 28, 154 28, 168 44 C158 46, 154 40, 120 40 C86 40, 82 46, 72 44 Z" fill="#7b8abb" opacity="0.9"/>
+
+  <rect x="104" y="84" width="32" height="18" rx="8" fill="#455f9b"/>
+  <rect x="98" y="102" width="44" height="18" rx="9" fill="#4f6ca5"/>
+
+  <circle cx="78" cy="104" r="18" fill="#eef7ff" stroke="#172d55" stroke-width="6"/>
+  <circle cx="162" cy="104" r="18" fill="#eef7ff" stroke="#172d55" stroke-width="6"/>
+  <circle cx="78" cy="104" r="10" fill="#5fbfff"/>
+  <circle cx="162" cy="104" r="10" fill="#5fbfff"/>
+  <circle cx="78" cy="104" r="22" fill="url(#eyeGlow)" opacity="0.45"/>
+  <circle cx="162" cy="104" r="22" fill="url(#eyeGlow)" opacity="0.45"/>
+
+  <path d="M94 126 H146" stroke="#1a2a4e" stroke-width="10" stroke-linecap="round"/>
+  <path d="M92 142 C108 158, 138 158, 154 142" stroke="#1c2a4f" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <rect x="48" y="126" width="30" height="60" rx="12" fill="url(#armGrad)"/>
+  <rect x="162" y="126" width="30" height="60" rx="12" fill="url(#armGrad)"/>
+  <path d="M60 182 C64 190, 70 206, 80 206" fill="#1a2a4e"/>
+  <path d="M180 182 C176 190, 170 206, 160 206" fill="#1a2a4e"/>
+
+  <rect x="42" y="186" width="24" height="18" rx="8" fill="#c5d5f3"/>
+  <rect x="174" y="186" width="24" height="18" rx="8" fill="#c5d5f3"/>
+  <circle cx="54" cy="195" r="4" fill="#172d55"/>
+  <circle cx="186" cy="195" r="4" fill="#172d55"/>
+
+  <rect x="76" y="170" width="88" height="64" rx="18" fill="url(#legGrad)"/>
+  <path d="M76 170 C80 166, 88 160, 96 160 H144 C152 160, 160 166, 164 170 Z" fill="#4f6ca5"/>
+
+  <rect x="84" y="222" width="28" height="14" rx="8" fill="#172a4c"/>
+  <rect x="128" y="222" width="28" height="14" rx="8" fill="#172a4c"/>
+  <path d="M72 210 C78 224, 106 224, 112 210" fill="#1f3459"/>
+  <path d="M128 210 C134 224, 162 224, 168 210" fill="#1f3459"/>
+
+  <rect x="72" y="50" width="96" height="16" rx="8" fill="#455f9b"/>
+</svg>

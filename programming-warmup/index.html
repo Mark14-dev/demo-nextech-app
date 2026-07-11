@@ -10,7 +10,7 @@
         margin: 20px;
       }
       h1 {
-        color: #333;
+        color: #a30808;
       }
       h3 {
         text-transform: uppercase;
@@ -19,14 +19,80 @@
         line-height: 1.5 em;
       }
       a:hover {
-        background-color: yellow;
+        background-color: rgb(218, 241, 38);
+      }
+      .drop-box {
+        width: 100%;
+        max-width: 500px;
+        margin-top: 1.5rem;
+        padding: 1.2rem;
+        border: none;
+        border-radius: 18px;
+        background: #f3f7ff;
+        text-align: center;
+        cursor: pointer;
+      }
+      .drop-box.drag-over {
+        background: #e4ecff;
+      }
+      #previewImage {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-height: 320px;
+        object-fit: contain;
+        border-radius: 12px;
+        margin: 0 auto;
+        box-shadow: 0 12px 24px rgba(31, 63, 111, 0.18);
       }
     </style>
   </head>
   <body>
-    <h1>[Enter Job Title]</h1>
-    <h3>Description</h3>
-    <p>[Enter the Job Description]</p>
-    <a href="">Link to Job Posting</a>
+    <h1>[Engineer]</h1>
+    <h3></h3>
+    <p>When doing math and other cool things you can make awesome stuff.]</p>
+    <a href="">Link to Job application</a>
+    <div class="drop-box" id="dropBox">
+      <img id="previewImage" src="./job-posting-image.jpg" alt="Preview image" />
+      <input id="fileInput" type="file" accept="image/*" hidden />
+    </div>
+
+    <script>
+      const dropBox = document.getElementById('dropBox');
+      const fileInput = document.getElementById('fileInput');
+      const previewImage = document.getElementById('previewImage');
+
+      function handleFile(file) {
+        if (!file || !file.type.startsWith('image/')) {
+          alert('Please drop a valid image file.');
+          return;
+        }
+        const url = URL.createObjectURL(file);
+        previewImage.src = url;
+        previewImage.style.display = 'block';
+      }
+
+      fileInput.addEventListener('change', () => {
+        if (fileInput.files.length > 0) {
+          handleFile(fileInput.files[0]);
+        }
+      });
+
+      dropBox.addEventListener('click', () => fileInput.click());
+      dropBox.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        dropBox.classList.add('drag-over');
+      });
+      dropBox.addEventListener('dragleave', () => {
+        dropBox.classList.remove('drag-over');
+      });
+      dropBox.addEventListener('drop', (event) => {
+        event.preventDefault();
+        dropBox.classList.remove('drag-over');
+        const file = event.dataTransfer.files[0];
+        handleFile(file);
+      });
+    </script>
   </body>
 </html>
+These are what the engineering jobs build.
