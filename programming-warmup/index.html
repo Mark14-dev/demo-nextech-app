@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Image Drop Box</title>
+    <title>Cool Background</title>
     <style>
       :root {
         color-scheme: dark;
@@ -15,104 +15,35 @@
       body {
         margin: 0;
         min-height: 100vh;
-        display: grid;
-        place-items: center;
-        background: radial-gradient(circle at top left, #4f46e5 0%, #1e293b 40%), linear-gradient(180deg, #0f172a 0%, #020617 100%);
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(90deg, #08060d 0%, #1c1030 40%, #0f0821 100%);
         color: #f8fafc;
       }
-      .frame {
-        width: min(100%, 700px);
-        padding: 30px;
-      }
-      .card {
-        border-radius: 32px;
-        background: rgba(15, 23, 42, 0.88);
-        border: 1px solid rgba(148, 163, 184, 0.16);
-        box-shadow: 0 40px 120px rgba(15, 23, 42, 0.35);
-        padding: 28px;
-      }
-      .headline {
-        margin: 0 0 16px;
-        font-size: clamp(1.7rem, 2.3vw, 2.6rem);
-        letter-spacing: -0.04em;
-      }
-      .subhead {
-        margin: 0 0 28px;
-        color: #cbd5e1;
-        line-height: 1.7;
-        max-width: 34rem;
-      }
-      .drop-box {
-        position: relative;
+      .top-bar {
         width: 100%;
-        min-height: 340px;
-        border-radius: 28px;
+        height: 92px;
+        background: #000000;
+        position: relative;
         overflow: hidden;
-        background: linear-gradient(180deg, rgba(148, 163, 184, 0.08) 0%, rgba(148, 163, 184, 0.02) 100%);
-        cursor: pointer;
+        box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
       }
-      .drop-box::after {
+      .top-bar::before {
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(circle at center, rgba(255,255,255,0.12), transparent 45%);
+        background: none;
+      }
+      .top-bar::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: none;
         pointer-events: none;
-      }
-      .drop-box:hover {
-        transform: translateY(-2px);
-        transition: transform 0.2s ease;
-      }
-      #previewImage {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        display: block;
-      }
-      .status {
-        margin-top: 18px;
-        color: #cbd5e1;
-        font-size: 0.98rem;
-      }
-      input[type='file'] {
-        display: none;
       }
     </style>
   </head>
   <body>
-    <div class="frame">
-      <div class="card">
-        <h1 class="headline">Drag and drop your image</h1>
-        <p class="subhead">Click the preview area or drop any photo in to replace the current image. The surrounding box is invisible and blends into the slick design.</p>
-        <div class="drop-box" id="dropBox">
-          <img id="previewImage" src="./job-posting-image.jpg" alt="Dropped preview" />
-          <input id="fileInput" type="file" accept="image/*" />
-        </div>
-        <p class="status">Click the box to choose a new image, or drag one in from your computer.</p>
-      </div>
-    </div>
-    <script>
-      const dropBox = document.getElementById('dropBox');
-      const fileInput = document.getElementById('fileInput');
-      const previewImage = document.getElementById('previewImage');
-
-      function handleFile(file) {
-        if (!file || !file.type.startsWith('image/')) return;
-        const url = URL.createObjectURL(file);
-        previewImage.src = url;
-      }
-
-      dropBox.addEventListener('click', () => fileInput.click());
-      dropBox.addEventListener('dragover', event => event.preventDefault());
-      dropBox.addEventListener('drop', event => {
-        event.preventDefault();
-        const file = event.dataTransfer.files[0];
-        handleFile(file);
-      });
-      fileInput.addEventListener('change', () => {
-        if (fileInput.files.length > 0) {
-          handleFile(fileInput.files[0]);
-        }
-      });
-    </script>
+    <div class="top-bar"></div>
   </body>
 </html>
