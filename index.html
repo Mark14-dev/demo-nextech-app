@@ -1,23 +1,368 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web App Starter</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#09010d" />
+    <meta name="description" content="Bonded Builds is a futuristic premium PC storefront experience with glassmorphism, neon motion, and immersive interaction." />
+    <title>Bonded Builds • Future Ready Builds</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
   </head>
   <body>
-    <div class="top-bar"></div>
-    <div id="app">
-      <navbar-component></navbar-component>
-      <router-view></router-view>
+    <div class="loader-wrap" id="pageLoader" aria-hidden="true">
+      <div class="loader-glow"></div>
+      <div class="loader-ring"></div>
+      <p class="loader-copy">Bonded Builds</p>
     </div>
 
-    <script src="https://unpkg.com/vue@3.5.13/dist/vue.global.prod.js"></script>
-    <script src="https://unpkg.com/vue-router@4.5.0/dist/vue-router.global.prod.js"></script>
-    <script src="https://unpkg.com/papaparse@5.5.2/papaparse.min.js"></script>
+    <div class="progress-wrap" aria-hidden="true">
+      <div class="progress-bar" id="scrollProgress"></div>
+    </div>
+
+    <canvas id="bgCanvas" aria-hidden="true"></canvas>
+    <div id="cursor" aria-hidden="true"></div>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="page-shell" id="app">
+      <header class="site-header">
+        <div class="brand">
+          <span class="brand-mark">B</span>
+          <span class="brand-name">Bonded Builds</span>
+        </div>
+
+        <nav class="site-nav" aria-label="Primary navigation">
+          <a href="#hero">Home</a>
+          <a href="#features">Features</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">Night</button>
+      </header>
+
+      <main>
+        <section id="hero" class="section hero-section reveal">
+          <div class="hero-shell">
+            <div class="hero-copy">
+              <p class="eyebrow">FUTURISTIC PC EXPERIENCE</p>
+              <h1>
+                Build the future of hardware with <span class="gradient-text">Bonded Builds</span>.
+              </h1>
+              <p class="hero-text">
+                A premium launchpad for visionary systems, powered by cinematic glassmorphism, interactive particles, and ambient neon motion.
+              </p>
+
+              <div class="hero-actions">
+                <a class="btn btn-primary magnetic" href="#pricing">Start your build</a>
+                <a class="btn btn-outline magnetic" href="#showcase">Explore the showcase</a>
+              </div>
+
+              <div class="hero-pill-group">
+                <span class="hero-pill"><strong>98%</strong> uptime guarantee</span>
+                <span class="hero-pill"><strong>10x</strong> faster impressions</span>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="hero-stage tilt-card">
+                <div class="hero-stage-glow"></div>
+                <div class="hero-stage-top"></div>
+                <div class="hero-stage-grid">
+                  <span class="stage-chip">GPU</span>
+                  <span class="stage-chip">CPU</span>
+                  <span class="stage-chip">RAM</span>
+                  <span class="stage-chip">SSD</span>
+                </div>
+                <p class="hero-stage-copy">Bonded Nebula core with reactive mesh lighting and premium component layout.</p>
+              </div>
+
+              <div class="hero-mini-grid">
+                <div class="mini-card">Thermal AI</div>
+                <div class="mini-card">Aurora UI</div>
+                <div class="mini-card">Live tuning</div>
+              </div>
+
+              <div class="hero-cta-panel reveal delay-100">
+                <div class="counter-group">
+                  <div class="counter-box">
+                    <span class="counter" data-target="98">0</span>
+                    <small>uptime</small>
+                  </div>
+                  <div class="counter-box">
+                    <span class="counter" data-target="18">0</span>
+                    <small>global clients</small>
+                  </div>
+                  <div class="counter-box">
+                    <span class="counter" data-target="3.5">0</span>
+                    <small>ms load</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="section features-section reveal">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">what makes it unique</p>
+              <h2>Every interaction is tailored to feel intelligent, elegant, and responsive.</h2>
+            </div>
+            <p class="section-note">From hover physics to ambient particles, the design is crafted to feel hand-built rather than templated.</p>
+          </div>
+
+          <div class="features-grid">
+            <article class="feature-card tilt-card">
+              <span class="feature-index">01</span>
+              <h3>Interactive ambient canvas</h3>
+              <p>Particles, light trails, and geometry respond to the cursor with silky smooth motion and subtle depth.</p>
+            </article>
+            <article class="feature-card tilt-card">
+              <span class="feature-index">02</span>
+              <h3>Glassmorphic system layers</h3>
+              <p>Layered surfaces, neon accents, and frosted cards create premium hierarchy while maintaining clarity.</p>
+            </article>
+            <article class="feature-card tilt-card">
+              <span class="feature-index">03</span>
+              <h3>Performance-first animations</h3>
+              <p>Scroll reveal, card tilt, and animated gradients use transforms and requestAnimationFrame for smooth 60fps flow.</p>
+            </article>
+            <article class="feature-card tilt-card">
+              <span class="feature-index">04</span>
+              <h3>Desktop & mobile polish</h3>
+              <p>Responsive spacing, touch-friendly controls, and fluid layouts ensure the experience stays premium everywhere.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="stats" class="section stats-section reveal">
+          <div class="section-head">
+            <p class="eyebrow">trusted results</p>
+            <h2>Metrics that tell the story of a confident launch experience.</h2>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card glass-card tilt-card">
+              <span class="stat-value"><span class="counter" data-target="97">0</span>%</span>
+              <p>Live marketing velocity</p>
+            </div>
+            <div class="stat-card glass-card tilt-card">
+              <span class="stat-value"><span class="counter" data-target="520">0</span>k</span>
+              <p>impressions accelerated</p>
+            </div>
+            <div class="stat-card glass-card tilt-card">
+              <span class="stat-value"><span class="counter" data-target="4.9">0</span>/5</span>
+              <p>average user delight</p>
+            </div>
+            <div class="stat-card glass-card tilt-card">
+              <span class="stat-value"><span class="counter" data-target="100">0</span>%</span>
+              <p>responsive device readiness</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="showcase" class="section showcase-section reveal">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">interactive showcase</p>
+              <h2>See the product, motion, and premium narrative in one immersive flow.</h2>
+            </div>
+            <p class="section-note">Hover any card to unlock layered depth, shimmering highlights, and ambient glow.</p>
+          </div>
+
+          <div class="showcase-grid">
+            <article class="showcase-card tilt-card">
+              <div class="showcase-chip">Design</div>
+              <h3>Depth in every layer</h3>
+              <p>Glass panels, floating gradients, and spacious typography create a calm yet dynamic interface.</p>
+            </article>
+            <article class="showcase-card tilt-card">
+              <div class="showcase-chip">Motion</div>
+              <h3>Motion that feels like magic</h3>
+              <p>Animated borders, hover bloom, and scroll reveal turn every section into a moment of discovery.</p>
+            </article>
+            <article class="showcase-card tilt-card highlight-card">
+              <div class="showcase-chip">Launch</div>
+              <h3>Fast, premium delivery</h3>
+              <p>Responsive visuals, polished buttons, and crisp interactions that elevate the product story.</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="timeline" class="section timeline-section reveal">
+          <div class="section-head">
+            <p class="eyebrow">the journey</p>
+            <h2>From concept to launch with cinematic momentum.</h2>
+          </div>
+
+          <div class="timeline-shell">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+              <span class="timeline-step">01</span>
+              <div>
+                <h3>Vision workshop</h3>
+                <p>We define the product story, brand tone, and immersive motion framework.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-step">02</span>
+              <div>
+                <h3>Design system</h3>
+                <p>Glass, gradient, and particle systems are layered to feel cohesive and premium.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-step">03</span>
+              <div>
+                <h3>Motion polish</h3>
+                <p>Every interaction is tuned for fluid, responsive animation across devices.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-step">04</span>
+              <div>
+                <h3>Launch readiness</h3>
+                <p>Optimized for performance, accessibility, and unforgettable first impressions.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="testimonials" class="section testimonials-section reveal">
+          <div class="section-head">
+            <p class="eyebrow">customer response</p>
+            <h2>Real reactions from people who feel the difference.</h2>
+          </div>
+
+          <div class="testimonials-grid">
+            <article class="testimonial-card glass-card tilt-card">
+              <p>"Bonded Builds feels like a full product demo rather than a website. Every hover and transition is artfully timed."</p>
+              <div class="testimonial-author">
+                <strong>Camila H.</strong>
+                <span>Product Strategist</span>
+              </div>
+            </article>
+            <article class="testimonial-card glass-card tilt-card">
+              <p>"The motion and glass styling make the experience feel high-end and futuristic. It’s not just beautiful — it feels real."</p>
+              <div class="testimonial-author">
+                <strong>Rylan K.</strong>
+                <span>Brand Creative</span>
+              </div>
+            </article>
+            <article class="testimonial-card glass-card tilt-card">
+              <p>"This layout is perfect for an Awwwards-worthy landing page. The details set it apart from anything templated."</p>
+              <div class="testimonial-author">
+                <strong>Nova E.</strong>
+                <span>UX Director</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="pricing" class="section pricing-section reveal">
+          <div class="section-head">
+            <p class="eyebrow">investment</p>
+            <h2>Choose the experience that matches your ambition.</h2>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="pricing-card glass-card">
+              <span class="pricing-label">Starter</span>
+              <strong class="pricing-price">$49</strong>
+              <p>Ideal for early-stage demos, single-page launches, and lightweight stories.</p>
+              <ul>
+                <li>Glass UI system</li>
+                <li>Interactive hero motion</li>
+                <li>Mobile optimized</li>
+              </ul>
+              <a class="btn btn-primary" href="#cta">Choose starter</a>
+            </article>
+            <article class="pricing-card pricing-card-highlight glass-card">
+              <span class="pricing-label">Pro</span>
+              <strong class="pricing-price">$99</strong>
+              <p>Designed for product launches, immersive showcases, and premium brand narratives.</p>
+              <ul>
+                <li>Particle motion canvas</li>
+                <li>Animated sections</li>
+                <li>Performance polish</li>
+              </ul>
+              <a class="btn btn-primary" href="#cta">Choose pro</a>
+            </article>
+            <article class="pricing-card glass-card">
+              <span class="pricing-label">Elite</span>
+              <strong class="pricing-price">$149</strong>
+              <p>Full flagship experience with bespoke interactions, custom animations, and polished launch pages.</p>
+              <ul>
+                <li>Scroll-driven animation</li>
+                <li>Interactive showcase</li>
+                <li>Priority refinement</li>
+              </ul>
+              <a class="btn btn-primary" href="#cta">Choose elite</a>
+            </article>
+          </div>
+        </section>
+
+        <section id="faq" class="section faq-section reveal">
+          <div class="section-head">
+            <p class="eyebrow">questions</p>
+            <h2>Everything you expect from a premium landing experience.</h2>
+          </div>
+
+          <div class="faq-grid">
+            <button class="faq-item" type="button" aria-expanded="false">
+              <span>How does the interactive background work?</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-answer">A custom canvas system uses requestAnimationFrame to render particles and light trails that react to cursor movement and clicks.</div>
+
+            <button class="faq-item" type="button" aria-expanded="false">
+              <span>Is this optimized for mobile?</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-answer">Yes — layout, touch targets, typography, and motion are all tailored for desktop and mobile environments.</div>
+
+            <button class="faq-item" type="button" aria-expanded="false">
+              <span>Can I customize the colors and typography?</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div class="faq-answer">Absolutely. The design system is built with semantic variables for effortless theme tuning and brand updates.</div>
+          </div>
+        </section>
+
+        <section id="cta" class="section cta-section reveal">
+          <div class="cta-shell">
+            <div>
+              <p class="eyebrow">Ready to launch</p>
+              <h2>Bring your next-gen build story to life with Bonded Builds.</h2>
+            </div>
+            <div class="cta-actions">
+              <a class="btn btn-primary btn-xl magnetic" href="#pricing">Launch with us</a>
+              <a class="btn btn-outline magnetic" href="#contact">Talk to a specialist</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div>
+          <p class="brand-footer">Bonded Builds</p>
+          <p>A futuristic presentation built to feel like a world-class digital product launch.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#hero">Home</a>
+          <a href="#showcase">Showcase</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </div>
+      </footer>
+    </div>
     <script src="app.js" type="module"></script>
   </body>
 </html>

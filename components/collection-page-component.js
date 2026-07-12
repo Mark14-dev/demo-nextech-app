@@ -67,7 +67,7 @@ export default {
               @drop.prevent="handleImageDrop($event, item)">
               <input
                 type="file"
-                :id="`imageFile-${item.id}`"
+                :id="'imageFile-' + item.id"
                 accept="image/*"
                 @change="handleFileSelect($event, item)" />
 
